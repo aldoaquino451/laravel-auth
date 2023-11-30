@@ -1,5 +1,5 @@
 @php
-    use App\Models\Project;
+    use App\Models\Date;
 @endphp
 
 @extends('layouts.admin')
@@ -22,7 +22,7 @@
                     <tr>
                         <th scope="row">{{ $project->id }}</th>
                         <td class=" text-capitalize">{{ $project->name }}</td>
-                        <td>{{ Project::formatDate($project->date) }}</td>
+                        <td>{{ Date::formatDate($project->date) }}</td>
                         <td>
                             <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-success d-inline-block">
                                 <i class="fa-solid fa-eye"></i>
