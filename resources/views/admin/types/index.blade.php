@@ -3,8 +3,7 @@
 @section('content')
     <h2 class="my-4">Lista dei Tipi</h2>
 
-
-    <div class=" w-50">
+    <div class=" w-75">
 
         <section>
             @if (session('error'))
@@ -49,7 +48,7 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Nuovo Tipo" name="name"
+                                        <input type="text" class="form-control" name="name"
                                             value="{{ $type->name }}">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-outline-secondary">Modifica</button>

@@ -1,10 +1,7 @@
 <?php
 
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\ProjectController;
-use App\Http\Controllers\Admin\TecnologyController;
-use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Guest\PageController;
 use Illuminate\Support\Facades\Route;
 

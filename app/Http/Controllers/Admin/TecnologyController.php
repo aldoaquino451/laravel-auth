@@ -17,7 +17,8 @@ class TecnologyController extends Controller
     public function index()
     {
         $tecnologies = Tecnology::orderBy('id', 'desc')->paginate(10);
-        return view('admin.tecnologies.index', compact('tecnologies'));
+        $id_edit = null;
+        return view('admin.tecnologies.index', compact('tecnologies', 'id_edit'));
     }
 
     /**
@@ -50,7 +51,7 @@ class TecnologyController extends Controller
 
             $new_tecnology->name = $request->name;
             $new_tecnology->slug = Str::slug($new_tecnology->name, '-');
-            $new_tecnology->version = 4.0;
+            $new_tecnology->version = $request->version;
 
 
             $new_tecnology->save();
@@ -78,9 +79,13 @@ class TecnologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tecnology $tecnology)
     {
-        //
+        $tecnologies = Tecnology::orderBy('id', 'desc')->paginate(10);
+
+        $id_edit = $tecnology->id;
+
+        return view('admin.tecnologies.index', compact('tecnologies', 'id_edit'));
     }
 
     /**
@@ -90,9 +95,18 @@ class TecnologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+    public function update(Request $request, Tecnology $tecnology)
     {
-        //
+        $data_form = $request->all();
+
+        $tecnology->name = $data_form['name'];
+        $tecnology->slug = Tecnology::generateSlug($tecnology->name);
+        $tecnology->version = $data_form['version'];
+
+        $tecnology->save();
+
+        return redirect()->route('admin.tecnologies.index');
     }
 
     /**

@@ -27,11 +27,14 @@
                             <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-success d-inline-block">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                            <a href="#" class="btn btn-warning d-inline-block">
+                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning d-inline-block">
                                 <i class="fa-solid fa-pencil"></i>
                             </a>
-                            <form action="" class="d-inline-block">
-                                <button class="btn btn-danger">
+                            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST"
+                                class="d-inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </form>

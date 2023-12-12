@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('date');
             $table->tinyText('description');
             $table->timestamps();
+            $table->index('name', 'date');
         });
     }
 
